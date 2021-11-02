@@ -1,0 +1,80 @@
+ 
+<html>
+ <div class="container mt-4">
+    <h1 class="display-4 text-center">
+      <i class="fas fa-employee-open text-primary"></i> My<span class="text-primary">EMPLOYEE</span>List</h1>
+      <form id="employee-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="text" id="age" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="salary">Salary</label>
+          <input type="text" id="salary" class="form-control">
+        </div>
+          <div class="form-group">
+            <label for="salary">Remarks</label>
+            <input type="text" id="remarks" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="salary">Email</label>
+            <input type="text" id="email" class="form-control">
+          </div>
+        <input type="submit" value="Add Employee" class="btn btn-primary btn-block">
+        <br>
+        <div class="input-group">
+          <input type="search" id="myInput" class="form-control rounded" placeholder="Search by email" aria-label="Search"
+          aria-describedby="search-addon" onkeyup="searchFun()"/>
+                </div>
+        
+      </form>
+      <table id="myTable" class="table table-striped mt-5">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>Remarks</th>
+            <th>Email</th>
+
+            
+            
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="employee-list"></tbody>
+      </table>
+      <script src="js/add.js"></script>
+      <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+  const searchFun=() => {
+    let filter = document.getElementById('myInput').value.toUpperCase();
+
+    let myTable = document.getElementById('myTable');
+    let tr = myTable.getElementsByTagName('tr');
+    for(var i=0; i<tr.length;i++){
+      let td = tr[i].getElementsByTagName('td')[4];
+      if(td){
+        let textValue = td.textContent || td.innerHTML;
+        if(textValue.toLocaleUpperCase().indexOf(filter)> -1){
+          tr[i].style.display = "";
+        }else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+</script>
+  </div>
+  </html>
